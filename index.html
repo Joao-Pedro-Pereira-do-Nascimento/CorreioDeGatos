@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Correios Felinos</title>
+  <link rel="icon" type="image/png" href="https://miro.medium.com/1*RpaJjaK0hdtXjgR4oDYgTQ.jpeg">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #003399;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header-title img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 50px;
+      object-fit: contain;
+    }
+
+    main {
+      max-width: 650px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #003399;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #FFCC00;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      color: #003399;
+    }
+
+    button:hover {
+      background-color: #e6b800;
+    }
+
+    .resultado {
+      display: none;
+      margin-top: 30px;
+    }
+
+    /* Caixa do código */
+    .codigo-box {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    /* Linha do tempo */
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      border-left: 3px solid #003399;
+      margin-left: 10px;
+    }
+
+    .timeline li {
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      position: relative;
+      background: #fafafa;
+      border-radius: 4px;
+    }
+
+    .timeline li::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: #003399;
+      border-radius: 50%;
+      position: absolute;
+      left: -8px;
+      top: 18px;
+    }
+
+    /* Status atual */
+    .timeline li.atual {
+      background: #fff8db;
+      border: 1px solid #FFCC00;
+      font-weight: bold;
+    }
+
+    .timeline li.atual::before {
+      background: #FFCC00;
+    }
+
+    .resultado img {
+      display: block;
+      max-width: 220px;
+      width: 100%;
+      margin: 25px auto 0;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1 class="header-title">
+    Correios Felinos
+    <img src="./icon.png" alt="Gato entregador">
+  </h1>
+  <p>Sistema Nacional de Rastreamento</p>
+</header>
+
+<main>
+  <h2>Rastreamento de Objeto</h2>
+
+  <label for="codigo">Código de rastreamento</label>
+  <input type="text" id="codigo" placeholder="Ex: MIAU123456BR">
+
+  <button onclick="rastrear()">Rastrear</button>
+
+  <div class="resultado" id="resultado">
+
+    <div class="codigo-box">
+      <strong>Código informado:</strong>
+      <span id="codigoResultado"></span>
+    </div>
+
+    <p><strong>Histórico de movimentação:</strong></p>
+
+    <ul class="timeline">
+      <li>Objeto postado na unidade de origem</li>
+      <li><B>Dandoka</B> coletou o objeto</li>
+      <li>Gato está a caminho do destino</li>
+      <li class="atual">O gordo parou para dormir (status atual <b>INDEFINIDO KSKSKSKSKS</b>)</li>
+    </ul>
+
+    <img src="https://img1.picmix.com/output/pic/normal/4/8/5/3/11893584_d2967.gif" alt="Gato entregador">
+  </div>
+
+  <audio id="musica" src="musica.mp3"></audio>
+</main>
+
+<footer>
+  © 2026 Correios Felinos — Todos os direitos reservados a pedrinhocraft
+</footer>
+
+<script>
+  function rastrear() {
+    const codigo = document.getElementById("codigo").value.trim();
+    if (!codigo) {
+      alert("Informe um código de rastreamento válido.");
+      return;
+    }
+
+    document.getElementById("codigoResultado").innerText = codigo;
+    document.getElementById("resultado").style.display = "block";
+
+    document.getElementById("musica").play();
+  }
+</script>
+
+</body>
+</html>
